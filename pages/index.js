@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { Dancing_Script, Crimson_Pro } from '@next/font/google'
 
@@ -54,9 +54,16 @@ export default function Home() {
     setPlayAudio(!playAudio)
   };
 
+  useEffect(() => {
+    document.addEventListener('click', function() {
+      document.querySelector('audio').play();
+      setPlayAudio(true);
+    }, { once: true })
+  }, [])
+
   return (
     <div className="relative">
-      <audio autoPlay loop>
+      <audio autoPlay loop id="audio">
         <source
           src="/ost/murotal.aac"
           type="audio/aac"
@@ -116,11 +123,11 @@ export default function Home() {
                 Putra ke 2 dari Bapak Syahrul (Alm) & Ibu Nurmina
               </p>
               <div className='my-1 flex flex-row items-center justify-center gap-x-2'>
-                <span class="h-[2px] w-[32px] bg-black" />
+                <span className="h-[2px] w-[32px] bg-black" />
                 <h4 className={`${dancingScript.variable} font-sans text-xl font-bold text-teal-900`}>
                   &
                 </h4>
-                <span class="h-[2px] w-[32px] bg-black" />
+                <span className="h-[2px] w-[32px] bg-black" />
               </div>
               <h1 className={`${dancingScript.variable} font-sans text-2xl font-bold text-teal-900`}>
                 Pipi Rahmadani S.Pd
