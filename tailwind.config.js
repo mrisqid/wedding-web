@@ -1,3 +1,6 @@
+// tailwind.config.js
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,7 +12,16 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: () => ({
+        home: "url('/img/home-bg.jpg')",
+        content: "url('/img/content-bg.png')",
+      }),
+      fontFamily: {
+        sans: ['var(--font-dancing-script)', ...fontFamily.sans],
+        serif: ['var(--font-crimson-pro)', ...fontFamily.serif],
+      },
+    },
   },
   plugins: [],
 }
